@@ -70,7 +70,7 @@ php artisan migrate:fresh --seed
 
 - Herramientas de desarrollo
 ```
-./vendor/bin/sail artisan test --env=env
+php artisan test --env=env
 ```
 
 
