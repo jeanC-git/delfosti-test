@@ -1,27 +1,74 @@
 # Delfosti Test
 
+
+## Pasos para desplegar el proyecto en local con Docker
+
 Requisitos
 
-- Instalar Docker Desktop [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- Instalar y mantener ejecutando [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
-## Pasos para desplegar el proyecto en local
+1) Clonar el proyecto
 
-1) Copiar ```.env.example``` => ```.env```
+2) Instalar dependencias
+```
+composer install
+```
 
-2) En una terminal, posicionarse en la raiz del proyecto y ejecutar:
+3) Generar APP_KEY
+```
+./vendor/bin/sail artisan key:generate
+```
+
+4) Despues de clonar el proyecto, copiar ```.env.example``` => ```.env```
+
+5) En una terminal, posicionarse en la raiz del proyecto y ejecutar:
 
 ```
 ./vendor/bin/sail up
 ```
 
-3) Ejecutar las migraciones y seeders:
+6) Ejecutar las migraciones y seeders:
 
  ```
 ./vendor/bin/sail artisan migrate:fresh --seed
 ```
 
+## Pasos para desplegar el proyecto en local con herramientas de desarrollo: Laragon
+
+Requisitos
+
+- PostgreSql ejecutando (incluido en laragon)
+- PHP 8.1+  (incluido en laragon)
+
+1) Clonar el proyecto
+
+2) Instalar dependencias
+```
+composer install
+```
+
+3) Generar APP_KEY
+```
+php artisan key:generate
+```
+
+4) Despues de clonar el proyecto, copiar ```.env.example``` => ```.env``` 
+   - Modificar las variables de entorno segun las credenciales del servicio de PostgreSql en local
+
+5) Crear la BD, ejecutar las migraciones y seeders:
+ ```
+php artisan migrate:fresh --seed
+```
+
+
 ## Para ejecutar los test:
 
+- Docker
+```
+./vendor/bin/sail artisan test --env=env
+```
+
+- Herramientas de desarrollo
 ```
 ./vendor/bin/sail artisan test --env=env
 ```

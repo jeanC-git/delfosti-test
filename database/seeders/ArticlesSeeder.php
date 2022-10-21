@@ -21,12 +21,9 @@ class ArticlesSeeder extends Seeder
         $articleService = new ArticleService();
         $categories = Category::all();
 
-        $api_url = "https://dummyjson.com/products";
+        $articles = json_decode(file_get_contents(storage_path() . "/products.json"), true);
 
-        $response = Http::get($api_url);
-        $articles = $response->json()['products'];
-
-        foreach ($articles as $article) {
+        foreach ($articles['products'] as $article) {
 
             $data = [
                 'name' => $article['title'],
