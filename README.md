@@ -23,5 +23,5 @@ Requisitos
 ## Para ejecutar los test:
 
 ```
-./vendor/bin/sail artisan test
+./vendor/bin/sail artisan test --env=env
 ```

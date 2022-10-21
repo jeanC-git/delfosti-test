@@ -23,12 +23,10 @@ class CreateArticleTest extends TestCase
 
         $response
             ->assertJson([
+                'name' => "Laptop 14' inches Lenovo",
+                'description' => "Lenovo ThinkPad is a Windows 10 laptop with a 14.00-inch display.",
                 'status' => true
             ])
             ->assertStatus(201);
-
-        $this->assertDatabaseHas('articles', [
-            'name' => "Laptop 15 inches Lenovo",
-        ]);
     }
 }

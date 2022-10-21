@@ -9,17 +9,21 @@ use Tests\TestCase;
 
 class SearchArticleTest extends TestCase
 {
-//    /**
-//     * A basic feature test example.
-//     *
-//     * @return void
-//     */
-//    public function test_search_articles()
-//    {
-//        $response = $this->getJson('/api/articles/search');
-//
-//        $response
-//            ->assertStatus(200);
-//
-//    }
+    /**
+     * A basic feature test example.
+     *
+     * @return void
+     */
+    public function test_search_articles()
+    {
+        $response = $this->get('/api/articles/search');
+
+        $response
+            ->assertJsonStructure([
+                'data' => [
+                    '*' => ['name', 'description', 'categories'],
+                ]
+            ])
+            ->assertStatus(200);
+    }
 }
