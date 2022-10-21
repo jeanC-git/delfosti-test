@@ -13,7 +13,7 @@ class ArticleSearchResource extends JsonResource
         return [
             'name' => $article->name,
             'description' => $article->description,
-            'categories' => $article->categories->makeHidden('pivot')
+            'categories' => $article->categories->pluck('name')
         ];
     }
 }

@@ -25,3 +25,25 @@ Requisitos
 ```
 ./vendor/bin/sail artisan test --env=env
 ```
+
+
+## Documentacion de API 
+
+# Buscar articulos
+```
+[GET] localhost:80/api/articles/search
+[Url Params] 
+    - page : Numero de pagina
+    - q: Filtro de texto para buscar por nombre o descripcion
+    - categories[]: Filtro para buscar por categoria a la que pertenece
+```
+- Ejemplo
+```
+// Buscar por pagina y filtro de texto
+[GET] localhost:80/api/articles/search?page=1&q=iPhone
+```
+
+```
+// Buscar por categorias con id 1 y 2
+[GET] localhost:80/api/articles/search?page=1&categories[]=1&categories[]=2
+```
