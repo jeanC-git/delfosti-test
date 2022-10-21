@@ -46,8 +46,8 @@ class Article extends Model
     public function scopeFilterByText($query, $filter)
     {
         $query->where(function ($q) use ($filter) {
-            $q->where('name', 'like', "%$filter%")
-                ->orWhere('description', 'like', "%$filter%");
+            $q->where('name', 'iLike', "%$filter%")
+                ->orWhere('description', 'iLike', "%$filter%");
         });
     }
 }
